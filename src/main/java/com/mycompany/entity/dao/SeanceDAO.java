@@ -1,20 +1,20 @@
 package com.mycompany.entity.dao;
 
 import com.mycompany.HibernateUtil;
-import com.mycompany.entity.Movie;
+import com.mycompany.entity.Seance;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class MovieDAO {
+public class SeanceDAO {
 
-    public Integer addMovie(Movie movie){
+    public Integer addSeance(Seance seance){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        Integer movieID = null;
+        Integer seanceID = null;
         try{
             tx = session.beginTransaction();
-            movieID = (Integer) session.save(movie);
+            seanceID = (Integer) session.save(seance);
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -23,10 +23,11 @@ public class MovieDAO {
             session.close();
         }
 
-        return movieID;
+        return seanceID;
 
     }
 
 
 
 }
+
