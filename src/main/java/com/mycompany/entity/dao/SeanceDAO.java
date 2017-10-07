@@ -6,6 +6,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class SeanceDAO {
 
     public Integer addSeance(Seance seance){
@@ -25,6 +27,24 @@ public class SeanceDAO {
 
         return seanceID;
 
+    }
+
+    public java.util.List<Seance> getSeanceList() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List<Seance> seances = null;
+        try{
+            tx = session.beginTransaction();
+            seances = session.createQuery("FROM Seance").list();
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+
+        return seances;
     }
 
 

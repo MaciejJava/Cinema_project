@@ -1,52 +1,77 @@
 package com.mycompany.entity.view;
 
+import com.mycompany.HibernateUtil;
+import com.mycompany.entity.Movie;
+import com.mycompany.entity.Seance;
+import com.mycompany.entity.dao.MovieDAO;
+import com.mycompany.entity.dao.SeanceDAO;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import static com.mycompany.entity.view.Window.window;
 
 public class SeanceView extends JFrame{
 
+    Window main = window;
+    SeanceDAO seanceDAO = new SeanceDAO();
+
     public Box addSeanceBox() {
 
-        //test tables
-        String[] moviesTab = { "movie1", "movie2", "movie3", "movie4", "movie5" };
-        String[] hoursTab = { "12:00", "14:00", "16:00", "18:00", "20:00" };
-        String[] peopleTab = { "1", "2", "3", "4", "5" };
-        String[] cinemaHallTab = { "Cinema hall 1", "Cinema hall 2", "Cinema hall 3", "Cinema hall 4", "Cinema hall 5" };
+
+        JTextField seanceTime = new JTextField("Time");
+        JTextField seanceRoom = new JTextField("Room");
+        JTextField seanceRoomRows = new JTextField("Row");
+        JTextField seanceRoomCols = new JTextField("Cols");
+        JTextField seanceMovie = new JTextField("Movie");
 
 
         JLabel addSeance = new JLabel("Add seance");
         //Jbuttons creating
 
         JButton bAddSeance = new JButton("ADD SEANCE!");
-        //JComboBox vreating
-        JComboBox movieListToComboBox = new JComboBox(moviesTab);
-        JComboBox hoursListToComboBox = new JComboBox(hoursTab);
-        JComboBox peopleListToComboBox = new JComboBox(peopleTab);
-        JComboBox cinemaHallsListToComboBox = new JComboBox(cinemaHallTab);
+
 
         Box editsPanel2 = Box.createVerticalBox();
 
         editsPanel2.add(addSeance);
-        editsPanel2.add(movieListToComboBox);
-        movieListToComboBox.setMaximumSize(new Dimension(300, 30));
-        editsPanel2.add(hoursListToComboBox);
-        hoursListToComboBox.setMaximumSize(new Dimension(300, 30));
-        editsPanel2.add(cinemaHallsListToComboBox);
-        cinemaHallsListToComboBox.setMaximumSize(new Dimension(300, 30));
+        editsPanel2.add(seanceTime);
+        seanceTime.setMaximumSize(new Dimension(300, 30));
+        editsPanel2.add(seanceRoom);
+        seanceRoom.setMaximumSize(new Dimension(300, 30));
+        editsPanel2.add(seanceRoomRows);
+        seanceRoomRows.setMaximumSize(new Dimension(300, 30));
+        editsPanel2.add(seanceRoomCols);
+        seanceRoomCols.setMaximumSize(new Dimension(300, 30));
+        editsPanel2.add(seanceMovie);
+        seanceMovie.setMaximumSize(new Dimension(300, 30));
         editsPanel2.add(bAddSeance);
+
+        bAddSeance.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                Seance seance = new Seance();
+                seance.setTime(LocalDateTime.parse(seanceTime.getText()));
+                seance.setRoom(Integer.parseInt(seanceRoom.getText()));
+                seance.setRoomNumRows(Integer.parseInt(seanceRoomRows.getText()));
+                seance.setRoomNumCols(Integer.parseInt(seanceRoomCols.getText()));
+                seanceDAO.addSeance(seance);
+            }
+        });
+
 
         return editsPanel2;
 
     }
 
-    public JTable tableSeance() {
 
-        //seance list
-        String[] columnSeance = {"SEANCE ID", "HOUR", "ROOM"};
-        String[][] dataSeance = {{"1", "12:00", "1"}, {"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"},{"1", "12:00", "1"}};
-        JTable tableSeance = new JTable(dataSeance, columnSeance);
 
-        return tableSeance;
-    }
+
 
 }

@@ -1,27 +1,27 @@
 package com.mycompany.entity.view;
 import com.mycompany.entity.presenter.MoviePresenter;
+import com.mycompany.entity.presenter.SeancePresenter;
 
 import javax.swing.*;
-import javax.swing.table.TableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Date;
+
 
 public class Window extends JFrame {
 
     public static Window window;
-    //MovieView elements
+    //View elements
     MovieView movieView = new MovieView();
+    SeanceView seanceView = new SeanceView();
     MoviePresenter moviePresenter = new MoviePresenter(movieView);
+    SeancePresenter seancePresenter = new SeancePresenter(seanceView);
     MyTableModel tableModel = new MyTableModel();
+    MyTableModel tableModel2 = new MyTableModel();
     JTable tableMovie = new JTable(tableModel);
+    JTable tableSeance = new JTable(tableModel2);
     Box editsPanel1 = movieView.addMovieBox();
 
 
-    //SeanceView elements
-    SeanceView seanceView = new SeanceView();
-    JTable tableSeance = seanceView.tableSeance();
+
     Box editsPanel2 = seanceView.addSeanceBox();
 
     //showing list
@@ -64,12 +64,10 @@ public class Window extends JFrame {
         tableModel.addColumn("DIRECTOR");
 
         main.add(new JScrollPane(tableMovie));
-        tableMovie.setAutoCreateRowSorter(true);
-        tableMovie.setEnabled(false);
+
 
         main.add(new JScrollPane(tableSeance));
-        tableSeance.setAutoCreateRowSorter(true);
-        tableSeance.setEnabled(false);
+
 
         main.add(new JScrollPane(tableShowing));
         tableShowing.setAutoCreateRowSorter(true);
@@ -83,6 +81,7 @@ public class Window extends JFrame {
 
         window = this;
         moviePresenter.fillMovieTable();
+        seancePresenter.fillSeanceTable();
 
     }
 
@@ -91,5 +90,8 @@ public class Window extends JFrame {
     }
 
 
+    public MyTableModel getTableModel2() {
+        return tableModel2;
+    }
 }
 

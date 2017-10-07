@@ -2,18 +2,18 @@ package com.mycompany.entity.view;
 
 import com.mycompany.entity.Movie;
 import com.mycompany.entity.dao.MovieDAO;
-import com.mycompany.entity.presenter.MoviePresenter;
+
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+
+
+import static com.mycompany.entity.view.Window.window;
 
 public class MovieView extends JFrame {
-
+    Window main = window;
     MovieDAO movieDAO = new MovieDAO();
     public Box addMovieBox() {
 
@@ -56,14 +56,7 @@ public class MovieView extends JFrame {
 
     }
 
-/*    public JTable tableMovie() {
 
-        String[] columnMovie = {"MOVIE ID", "TITLE", "YEAR", "DURATION", "DIRECTOR"};
-        String[][] dataMovie = MoviePresenter.
-
-
-        return tableMovie;
-        }*/
 
 
 
