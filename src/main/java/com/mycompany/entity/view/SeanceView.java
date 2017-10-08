@@ -1,20 +1,16 @@
 package com.mycompany.entity.view;
 
-import com.mycompany.HibernateUtil;
-import com.mycompany.entity.Movie;
+
 import com.mycompany.entity.Seance;
 import com.mycompany.entity.dao.MovieDAO;
 import com.mycompany.entity.dao.SeanceDAO;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
-import java.util.List;
+
 
 import static com.mycompany.entity.view.Window.window;
 
@@ -22,6 +18,7 @@ public class SeanceView extends JFrame{
 
     Window main = window;
     SeanceDAO seanceDAO = new SeanceDAO();
+    MovieDAO movieDAO = new MovieDAO();
 
     public Box addSeanceBox() {
 
@@ -61,6 +58,7 @@ public class SeanceView extends JFrame{
                 seance.setRoom(Integer.parseInt(seanceRoom.getText()));
                 seance.setRoomNumRows(Integer.parseInt(seanceRoomRows.getText()));
                 seance.setRoomNumCols(Integer.parseInt(seanceRoomCols.getText()));
+                seance.setMovie(movieDAO.getMovie(Integer.valueOf(seanceMovie.getText())));
                 seanceDAO.addSeance(seance);
             }
         });

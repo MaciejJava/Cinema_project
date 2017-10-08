@@ -1,12 +1,8 @@
 package com.mycompany.entity;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "movie")
@@ -26,6 +22,11 @@ public class Movie {
 
     @Column(name = "director")
     private String director;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,
+            mappedBy = "movie", orphanRemoval = true)
+    @Column(name = "SEANCE", nullable = false)
+    private List<Seance> seances;
 
 
     public int getMovie_id() {

@@ -67,9 +67,9 @@ public class Window extends JFrame {
         tableModel2.addColumn("MOVIE");
 
         main.add(new JScrollPane(tableMovie));
-
-
+        tableMovie.setAutoCreateRowSorter(true);
         main.add(new JScrollPane(tableSeance));
+        tableSeance.setAutoCreateRowSorter(true);
 
 
         main.add(new JScrollPane(tableShowing));

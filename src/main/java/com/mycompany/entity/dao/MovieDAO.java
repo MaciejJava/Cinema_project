@@ -47,6 +47,24 @@ public class MovieDAO {
         return movies;
     }
 
+    public Movie getMovie(Integer movie_id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        Movie movie = null;
+        try{
+            tx = session.beginTransaction();
+            movie = session.get(Movie.class, movie_id);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+
+        return movie;
+    }
+
 
 
 
