@@ -57,7 +57,7 @@ public class SeanceView extends JFrame{
         bAddSeance.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 Seance seance = new Seance();
-                seance.setTime(LocalDateTime.parse(seanceTime.getText()));
+                seance.setTime(Integer.parseInt(seanceTime.getText()));
                 seance.setRoom(Integer.parseInt(seanceRoom.getText()));
                 seance.setRoomNumRows(Integer.parseInt(seanceRoomRows.getText()));
                 seance.setRoomNumCols(Integer.parseInt(seanceRoomCols.getText()));

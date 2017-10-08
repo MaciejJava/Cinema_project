@@ -22,7 +22,7 @@ public class SeancePresenter {
     public void fillSeanceTable() {
         List<Seance> allSeances = seanceDAO.getSeanceList();
         for (Seance m : allSeances) {
-            String[] seancesData = {String.valueOf(m.getSeance_id()),String.valueOf(m.getTime()), String.valueOf(m.getRoom()), String.valueOf(m.getRoomNumRows()), String.valueOf(m.getRoomNumCols()), String.valueOf(m.getMovie())};
+            String[] seancesData = {String.valueOf(m.getSeance_id()),String.valueOf(m.getTime()), String.valueOf(m.getRoom()), String.valueOf(m.getRoomNumRows()), String.valueOf(m.getRoomNumCols()), String.valueOf(m.getMovie().getTitle())};
             window.getTableModel2().addRow(seancesData);
         }
     }

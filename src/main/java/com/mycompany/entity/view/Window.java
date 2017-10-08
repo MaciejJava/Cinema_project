@@ -12,6 +12,7 @@ public class Window extends JFrame {
     //View elements
     MovieView movieView = new MovieView();
     SeanceView seanceView = new SeanceView();
+    ReservationView reservationView = new ReservationView();
     MoviePresenter moviePresenter = new MoviePresenter(movieView);
     SeancePresenter seancePresenter = new SeancePresenter(seanceView);
     MyTableModel tableModel = new MyTableModel();
@@ -19,10 +20,8 @@ public class Window extends JFrame {
     JTable tableMovie = new JTable(tableModel);
     JTable tableSeance = new JTable(tableModel2);
     Box editsPanel1 = movieView.addMovieBox();
-
-
-
     Box editsPanel2 = seanceView.addSeanceBox();
+    Box editsPanel3 = reservationView.addReservationBox();
 
     //showing list
     String[] columnShowing = {"MOVIE","HALL","FREE SEATS", "ENDS AT"};
@@ -32,9 +31,6 @@ public class Window extends JFrame {
     //Jpanels creating
     JPanel main = new JPanel();
     JPanel edits = new JPanel();
-
-    //Box creating
-    Box editsPanel3 = Box.createVerticalBox();
 
     //Tabed pane creating
     JTabbedPane tabbedPane = new JTabbedPane();
@@ -62,6 +58,13 @@ public class Window extends JFrame {
         tableModel.addColumn("TITLE");
         tableModel.addColumn("YEAR");
         tableModel.addColumn("DIRECTOR");
+
+        tableModel2.addColumn("SEANCE ID");
+        tableModel2.addColumn("TIME");
+        tableModel2.addColumn("ROOM");
+        tableModel2.addColumn("ROWS");
+        tableModel2.addColumn("COLS");
+        tableModel2.addColumn("MOVIE");
 
         main.add(new JScrollPane(tableMovie));
 

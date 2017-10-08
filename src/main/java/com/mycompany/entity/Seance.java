@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "seance")
@@ -21,7 +20,7 @@ public class Seance {
     private int seance_id;
 
     @Column(name = "time")
-    private LocalDateTime time;
+    private int time;
 
     @Column(name = "room")
     private int room;
@@ -44,11 +43,11 @@ public class Seance {
         this.seance_id = seance_id;
     }
 
-    public LocalDateTime getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
