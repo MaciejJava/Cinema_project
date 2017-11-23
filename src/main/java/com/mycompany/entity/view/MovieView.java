@@ -31,7 +31,7 @@ public class MovieView extends JFrame {
 
         editsPanel1.add(addMovie);
         editsPanel1.add(movieTitle);
-        movieTitle.setMaximumSize(new Dimension(300, 30));
+        movieTitle.setMaximumSize(new Dimension(300,30));
         editsPanel1.add(year);
         year.setMaximumSize(new Dimension(300, 30));
         editsPanel1.add(duration);
