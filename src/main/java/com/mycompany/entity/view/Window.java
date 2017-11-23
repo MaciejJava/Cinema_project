@@ -89,7 +89,7 @@ public class Window extends JFrame {
     }
 
     public MyTableModel getTableModel() {
-        return tableModel;
+         return tableModel;
     }
 
 

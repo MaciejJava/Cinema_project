@@ -46,7 +46,7 @@ public class SeanceView extends JFrame{
         editsPanel2.add(seanceRoomRows);
         seanceRoomRows.setMaximumSize(new Dimension(300, 30));
         editsPanel2.add(seanceRoomCols);
-        seanceRoomCols.setMaximumSize(new Dimension(300, 30));
+        seanceRoomCols.setMaximumSize(new Dimension(300,30));
         editsPanel2.add(seanceMovie);
         seanceMovie.setMaximumSize(new Dimension(300, 30));
         editsPanel2.add(bAddSeance);
