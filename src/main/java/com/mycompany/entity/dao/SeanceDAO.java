@@ -27,7 +27,7 @@ public class SeanceDAO {
 
         return seanceID;
 
-    }
+    } 
 
     public java.util.List<Seance> getSeanceList() {
         Session session = HibernateUtil.getSessionFactory().openSession();
