@@ -39,31 +39,14 @@ public class ReservationView extends JFrame {
                 }
             });
         }
-
-
-
         bReservation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 reservationFrame.setVisible(true);
                 reservationFrame.setSize(250, 250);
+                reservationFrame.setResizable(false);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return editsPanel3;
     }
 
